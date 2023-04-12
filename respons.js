@@ -1,15 +1,9 @@
-const respons = (statusCode, data, message, res)=>{
+const respons = (statusCode, data, res)=>{
     res.status(statusCode).json({
-        payload:{
+        // payload:{
            status_code:statusCode,
-           datas:data,
-           message: message
-        },
-        pagination:{
-            prev:"",
-            next:"",
-            max:""
-        }
+           data:data,
+        // }
     })
 }
 
