@@ -6,8 +6,8 @@ const WisataSchema = mongoose.Schema({
     desa: String,
     kec: String,
     tiket: String,
-    latitude: String,
-    longitude: String,
+    // latitude: String,
+    // longitude: String,
 })
 
 module.exports = mongoose.model("Wisata", WisataSchema)
