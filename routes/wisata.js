@@ -18,6 +18,9 @@ router.post("/", async (req, res) => {
         nama: req.body.nama,
         desa: req.body.desa,
         kec: req.body.kec,
+        tiket: req.body.tiket,
+        latitude: req.body.latitude,
+        longitude: req.body.longitude,
     })
     try {
         const wisata = await wisataPost.save()
@@ -33,6 +36,9 @@ router.put("/:wisataId", async (req, res) => {
             nama: req.body.nama,
             desa: req.body.desa,
             kec: req.body.kec,
+            tiket: req.body.tiket,
+            latitude: req.body.latitude,
+            longitude: req.body.longitude,
         })
         res.send(wisataUpdate)
     } catch (err) {
