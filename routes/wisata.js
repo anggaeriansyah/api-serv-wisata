@@ -1,12 +1,14 @@
 const express = require("express")
 const Wisata = require("../models/Wisata")
+const respons = require('../routes/respons')
 const router = express.Router()
 
 // Get all posts
 router.get("/", async (req, res) => {
     try {
         const wisata = await Wisata.find()
-        res.send(wisata)
+        // res.send(wisata)
+        respons(200, wisata, "OK", res)
     } catch (err) {
         res.json({ message: err })
     }
