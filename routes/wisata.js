@@ -4,7 +4,7 @@ const respons = require('../routes/respons')
 const router = express.Router()
 
 // Get all posts
-router.get("/", async (req, res) => {
+router.get("/api", async (req, res) => {
     try {
         const wisata = await Wisata.find()
         // res.send(wisata)
