@@ -1,12 +1,15 @@
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
+const mongooseDouble = require("mongoose-double");
+require('mongoose-double')(mongoose);
+
 
 const WisataSchema = mongoose.Schema({
     nama: String,
     alamat: {
         desa: String,
         kec: String,
-        latitude: Number,
-        longitude: Number
+        latitude: mongoose.Schema.Types.Double,
+        longitude: mongoose.Schema.Types.Double
     },
     info: {
         tiket: String,
@@ -31,7 +34,7 @@ const WisataSchema = mongoose.Schema({
         minggu: String
     },
     "tempClosed": Boolean,
-    "distance": Number
+    "distance": mongoose.Schema.Types.Double
 })
 
 module.exports = mongoose.model("Wisata", WisataSchema)
