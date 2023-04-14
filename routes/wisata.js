@@ -1,6 +1,5 @@
 const express = require("express")
 const Wisata = require("../models/Wisata")
-// const Post = require("./models/post")
 const router = express.Router()
 
 // Get all posts

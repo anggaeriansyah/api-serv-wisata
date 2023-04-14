@@ -1,13 +1,10 @@
 const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
-const cors = require('cors')
-// const db = require('./connection')
 const respons = require('./respons')
 const mongoose = require('mongoose')
 require('dotenv/config')
 app.use(bodyParser.json())
-app.use(cors())
 
 const wisataRoutes = require("./routes/wisata")
 
