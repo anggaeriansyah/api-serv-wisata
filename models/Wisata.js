@@ -5,6 +5,7 @@ require('mongoose-double')(mongoose);
 
 const WisataSchema = mongoose.Schema({
     nama: String,
+    image: String,
     alamat: {
         desa: String,
         kec: String,

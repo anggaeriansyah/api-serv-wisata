@@ -2,12 +2,37 @@ const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
+const multer = require('multer')
+const path = require('path')
+
 require('dotenv/config')
 app.use(bodyParser.json())
 
 const wisataRoutes = require("./routes/wisata")
+const fileStorage = multer.diskStorage({
+  destination: (req, file, cb) =>{
+    cb(null, 'images');
+  },
+  filename: (req, file, cb)=>{
+    cb(null, new Date().getTime() + '-' + file.originalname)
+  }
+})
 
+// const fileFilter = () =>{
+//   if (file.mimetype === 'image/png' || file.mimetype === 'image/jpg' || file.mimetype === 'image/jpeg' || file.mimetype === 'image/webp') {
+//     cb(null, true)
+//   }else{
+//     cb(null, false)
+//   }
+// }
+
+// app.use('/images', express.static(path.join(__dirname, 'images')));
+app.use(multer({storage: fileStorage}).single('image'))
 app.use('/wisata', wisataRoutes)
+
+app.get('/images/:filename', (req, res) => {
+  res.sendFile(path.join(__dirname + '/images/' + req.params.filename));
+});
 
 //connect to db
 mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true, useUnifiedTopology: true })

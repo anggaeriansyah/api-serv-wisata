@@ -15,8 +15,14 @@ router.get("/api", async (req, res) => {
 })
 
 router.post("/", async (req, res) => {
+    // if (!req.file) {
+    //     const err = new Error('image harus di Upload');
+    //     err.errorStatus = 422;
+    //     throw err;
+    // }
     const wisataPost = new Wisata({
         nama: req.body.nama,
+        image: req.file.path,
         alamat: {
             desa: req.body.desa,
             kec: req.body.kec,
@@ -40,7 +46,7 @@ router.post("/", async (req, res) => {
             senin: req.body.jSenin,
             selasa: req.body.jSelasa,
             rabu: req.body.jRabu,
-            kamis: req.body.jkamis,
+            kamis: req.body.jKamis,
             jumat: req.body.jJumat,
             sabtu: req.body.jSabtu,
             minggu: req.body.jMinggu,
