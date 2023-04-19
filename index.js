@@ -27,7 +27,8 @@ const fileStorage = multer.diskStorage({
 // }
 
 // app.use('/images', express.static(path.join(__dirname, 'images')));
-app.use(multer({storage: fileStorage}).single('image'))
+// app.use(multer({storage: fileStorage}).single('image'));
+app.use(multer({storage: fileStorage}).fields([{name: 'image', maxCount:1}, {name: 'galeries'}]));
 app.use('/wisata', wisataRoutes)
 
 app.get('/images/:filename', (req, res) => {

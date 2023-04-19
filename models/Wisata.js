@@ -34,6 +34,12 @@ const WisataSchema = mongoose.Schema({
         sabtu: String,
         minggu: String
     },
+    imageGaleries: {
+        image1: String,
+        image2: String,
+        image3: String,
+        image4: String
+    },
     "tempClosed": Boolean,
     "distance": mongoose.Schema.Types.Double
 })

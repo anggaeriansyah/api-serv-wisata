@@ -20,9 +20,26 @@ router.post("/", async (req, res) => {
     //     err.errorStatus = 422;
     //     throw err;
     // }
+    let images = req.files['galeries'];
+    if (!images[0]) {
+        // Jika tidak, tambahkan sebuah objek kosong dengan property filename = null
+        images.splice(0, 1, { filename: null });
+      }
+    if (!images[1]) {
+        // Jika tidak, tambahkan sebuah objek kosong dengan property filename = null
+        images.splice(1, 1, { filename: null });
+      }
+    if (!images[2]) {
+        // Jika tidak, tambahkan sebuah objek kosong dengan property filename = null
+        images.splice(2, 1, { filename: null });
+      }
+    if (!images[3]) {
+        // Jika tidak, tambahkan sebuah objek kosong dengan property filename = null
+        images.splice(3, 1, { filename: null });
+      }
     const wisataPost = new Wisata({
         nama: req.body.nama,
-        image: req.file.path,
+        image: req.files['image'][0].path,
         alamat: {
             desa: req.body.desa,
             kec: req.body.kec,
@@ -51,6 +68,12 @@ router.post("/", async (req, res) => {
             sabtu: req.body.jSabtu,
             minggu: req.body.jMinggu,
         },
+        imageGaleries: {
+            image1: images[0].path,
+            image2: req.files['galeries'][1].path,
+            image3: req.files['galeries'][2].path,
+            image4: req.files['galeries'][3].path
+        },
         tempClosed: req.body.tempClosed,
         distance: req.body.distance
     })
@@ -66,6 +89,7 @@ router.put("/:wisataId", async (req, res) => {
     try {
         const wisataUpdate = await Wisata.updateOne({ _id: req.params.wisataId }, {
             nama: req.body.nama,
+            image: req.files['image'][0].path,
             alamat: {
                 desa: req.body.desa,
                 kec: req.body.kec,
@@ -93,6 +117,12 @@ router.put("/:wisataId", async (req, res) => {
                 jumat: req.body.jJumat,
                 sabtu: req.body.jSabtu,
                 minggu: req.body.jMinggu,
+            },
+            imageGaleries: {
+                image1: images[0].path,
+                image2: req.files['galeries'][1].path,
+                image3: req.files['galeries'][2].path,
+                image4: req.files['galeries'][3].path
             },
             tempClosed: req.body.tempClosed,
             distance: req.body.distance
