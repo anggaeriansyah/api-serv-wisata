@@ -18,17 +18,17 @@ const fileStorage = multer.diskStorage({
   }
 })
 
-// const fileFilter = () =>{
-//   if (file.mimetype === 'image/png' || file.mimetype === 'image/jpg' || file.mimetype === 'image/jpeg' || file.mimetype === 'image/webp') {
-//     cb(null, true)
-//   }else{
-//     cb(null, false)
-//   }
-// }
+const fileFilterImg = (req, file, cb) =>{
+  if (file.mimetype === 'image/png' || file.mimetype === 'image/jpg' || file.mimetype === 'image/jpeg' || file.mimetype === 'image/webp') {
+    cb(null, true)
+  }else{
+    cb(null, false)
+  }
+}
 
 // app.use('/images', express.static(path.join(__dirname, 'images')));
 // app.use(multer({storage: fileStorage}).single('image'));
-app.use(multer({storage: fileStorage}).fields([{name: 'image', maxCount:1}, {name: 'galeries'}]));
+app.use(multer({storage: fileStorage, fileFilter: fileFilterImg}).fields([{name: 'image', maxCount:1}, {name: 'galeries'}]));
 app.use('/wisata', wisataRoutes)
 
 app.get('/images/:filename', (req, res) => {

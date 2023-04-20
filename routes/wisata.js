@@ -70,9 +70,9 @@ router.post("/", async (req, res) => {
         },
         imageGaleries: {
             image1: images[0].path,
-            image2: req.files['galeries'][1].path,
-            image3: req.files['galeries'][2].path,
-            image4: req.files['galeries'][3].path
+            image2: images[1].path,
+            image3: images[2].path,
+            image4: images[3].path
         },
         tempClosed: req.body.tempClosed,
         distance: req.body.distance
@@ -86,6 +86,23 @@ router.post("/", async (req, res) => {
 })
 
 router.put("/:wisataId", async (req, res) => {
+    let images = req.files['galeries'];
+    if (!images[0]) {
+        // Jika tidak, tambahkan sebuah objek kosong dengan property filename = null
+        images.splice(0, 1, { filename: null });
+      }
+    if (!images[1]) {
+        // Jika tidak, tambahkan sebuah objek kosong dengan property filename = null
+        images.splice(1, 1, { filename: null });
+      }
+    if (!images[2]) {
+        // Jika tidak, tambahkan sebuah objek kosong dengan property filename = null
+        images.splice(2, 1, { filename: null });
+      }
+    if (!images[3]) {
+        // Jika tidak, tambahkan sebuah objek kosong dengan property filename = null
+        images.splice(3, 1, { filename: null });
+      }
     try {
         const wisataUpdate = await Wisata.updateOne({ _id: req.params.wisataId }, {
             nama: req.body.nama,
@@ -120,9 +137,9 @@ router.put("/:wisataId", async (req, res) => {
             },
             imageGaleries: {
                 image1: images[0].path,
-                image2: req.files['galeries'][1].path,
-                image3: req.files['galeries'][2].path,
-                image4: req.files['galeries'][3].path
+                image2: images[1].path,
+                image3: images[2].path,
+                image4: images[3].path
             },
             tempClosed: req.body.tempClosed,
             distance: req.body.distance
