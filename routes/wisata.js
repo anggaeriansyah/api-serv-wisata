@@ -20,22 +20,22 @@ router.post("/", async (req, res) => {
     //     err.errorStatus = 422;
     //     throw err;
     // }
-    let images = req.files['galeries'];
-    if (!images[0]) {
+    let gallery = req.files['galeries'];
+    if (!gallery[0]) {
         // Jika tidak, tambahkan sebuah objek kosong dengan property filename = null
-        images.splice(0, 1, { filename: null });
+        gallery.splice(0, 1, { filename: null });
       }
-    if (!images[1]) {
+    if (!gallery[1]) {
         // Jika tidak, tambahkan sebuah objek kosong dengan property filename = null
-        images.splice(1, 1, { filename: null });
+        gallery.splice(1, 1, { filename: null });
       }
-    if (!images[2]) {
+    if (!gallery[2]) {
         // Jika tidak, tambahkan sebuah objek kosong dengan property filename = null
-        images.splice(2, 1, { filename: null });
+        gallery.splice(2, 1, { filename: null });
       }
-    if (!images[3]) {
+    if (!gallery[3]) {
         // Jika tidak, tambahkan sebuah objek kosong dengan property filename = null
-        images.splice(3, 1, { filename: null });
+        gallery.splice(3, 1, { filename: null });
       }
     const wisataPost = new Wisata({
         nama: req.body.nama,
@@ -69,10 +69,10 @@ router.post("/", async (req, res) => {
             minggu: req.body.jMinggu,
         },
         imageGaleries: {
-            image1: images[0].path,
-            image2: images[1].path,
-            image3: images[2].path,
-            image4: images[3].path
+            image1: gallery[0].path,
+            image2: gallery[1].path,
+            image3: gallery[2].path,
+            image4: gallery[3].path
         },
         tempClosed: req.body.tempClosed,
         distance: req.body.distance
@@ -86,22 +86,22 @@ router.post("/", async (req, res) => {
 })
 
 router.put("/:wisataId", async (req, res) => {
-    let images = req.files['galeries'];
-    if (!images[0]) {
+    let gallery = req.files['galeries'];
+    if (!gallery[0]) {
         // Jika tidak, tambahkan sebuah objek kosong dengan property filename = null
-        images.splice(0, 1, { filename: null });
+        gallery.splice(0, 1, { filename: null });
       }
-    if (!images[1]) {
+    if (!gallery[1]) {
         // Jika tidak, tambahkan sebuah objek kosong dengan property filename = null
-        images.splice(1, 1, { filename: null });
+        gallery.splice(1, 1, { filename: null });
       }
-    if (!images[2]) {
+    if (!gallery[2]) {
         // Jika tidak, tambahkan sebuah objek kosong dengan property filename = null
-        images.splice(2, 1, { filename: null });
+        gallery.splice(2, 1, { filename: null });
       }
-    if (!images[3]) {
+    if (!gallery[3]) {
         // Jika tidak, tambahkan sebuah objek kosong dengan property filename = null
-        images.splice(3, 1, { filename: null });
+        gallery.splice(3, 1, { filename: null });
       }
     try {
         const wisataUpdate = await Wisata.updateOne({ _id: req.params.wisataId }, {
@@ -136,10 +136,10 @@ router.put("/:wisataId", async (req, res) => {
                 minggu: req.body.jMinggu,
             },
             imageGaleries: {
-                image1: images[0].path,
-                image2: images[1].path,
-                image3: images[2].path,
-                image4: images[3].path
+                image1: gallery[0].path,
+                image2: gallery[1].path,
+                image3: gallery[2].path,
+                image4: gallery[3].path
             },
             tempClosed: req.body.tempClosed,
             distance: req.body.distance
