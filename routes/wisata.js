@@ -51,13 +51,13 @@ router.post("/", async (req, res) => {
             deskripsi: req.body.deskripsi
         },
         hariOp: {
-            senin: req.body.senin,
-            selasa: req.body.selasa,
-            rabu: req.body.rabu,
-            kamis: req.body.kamis,
-            jumat: req.body.jumat,
-            sabtu: req.body.sabtu,
-            minggu: req.body.minggu,
+            senin: req.body.hSenin,
+            selasa: req.body.hSelasa,
+            rabu: req.body.hRabu,
+            kamis: req.body.hKamis,
+            jumat: req.body.hJumat,
+            sabtu: req.body.hSabtu,
+            minggu: req.body.hMinggu,
         },
         jamOp: {
             senin: req.body.jSenin,
@@ -75,6 +75,7 @@ router.post("/", async (req, res) => {
             image4: gallery[3].path
         },
         tempClosed: req.body.tempClosed,
+        kategori: req.body.kategori,
         distance: req.body.distance
     })
     try {
@@ -142,6 +143,7 @@ router.put("/:wisataId", async (req, res) => {
                 image4: gallery[3].path
             },
             tempClosed: req.body.tempClosed,
+            kategori: req.body.kategori,
             distance: req.body.distance
         })
         res.send(wisataUpdate)

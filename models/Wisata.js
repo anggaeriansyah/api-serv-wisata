@@ -41,6 +41,7 @@ const WisataSchema = mongoose.Schema({
         image4: String
     },
     "tempClosed": Boolean,
+    "kategori": String,
     "distance": mongoose.Schema.Types.Double
 })
 
