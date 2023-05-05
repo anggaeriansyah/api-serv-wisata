@@ -32,7 +32,7 @@ app.use(multer({storage: fileStorage, fileFilter: fileFilterImg}).fields([{name:
 app.use('/wisata', wisataRoutes)
 
 app.get('/images/:filename', (req, res) => {
-  res.sendFile(path.join(__dirname + '/images' + req.params.filename));
+  res.sendFile(path.join(__dirname + '/images/' + req.params.filename));
 });
 
 //connect to db
