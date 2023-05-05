@@ -68,12 +68,7 @@ router.post("/", async (req, res) => {
             sabtu: req.body.jSabtu,
             minggu: req.body.jMinggu,
         },
-        imageGaleries: {
-            image1: gallery[0].path,
-            image2: gallery[1].path,
-            image3: gallery[2].path,
-            image4: gallery[3].path
-        },
+        imageGaleries: [gallery[0].path,  gallery[1].path, gallery[2].path, gallery[3].path],
         tempClosed: req.body.tempClosed,
         kategori: req.body.kategori,
         distance: req.body.distance
@@ -136,12 +131,13 @@ router.put("/:wisataId", async (req, res) => {
                 sabtu: req.body.jSabtu,
                 minggu: req.body.jMinggu,
             },
-            imageGaleries: {
-                image1: gallery[0].path,
-                image2: gallery[1].path,
-                image3: gallery[2].path,
-                image4: gallery[3].path
-            },
+            imageGaleries: [gallery[0].path,  gallery[1].path, gallery[2].path, gallery[3].path],
+            // imageGaleries: {
+            //     image1: gallery[0].path,
+            //     image2: gallery[1].path,
+            //     image3: gallery[2].path,
+            //     image4: gallery[3].path
+            // },
             tempClosed: req.body.tempClosed,
             kategori: req.body.kategori,
             distance: req.body.distance
