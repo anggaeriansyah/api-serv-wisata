@@ -13,6 +13,24 @@ router.get("/api", async (req, res) => {
         res.json({ message: err })
     }
 })
+router.get("/api/rekreasi", async (req, res) => {
+    const id = req.params.kategori;
+    try {
+        const wisata = await Wisata.find({kategori: 'rekreasi'})
+        respons(200, wisata, "OK", res)
+    } catch (err) {
+        res.status(500).json({ message: err })
+    }
+})
+router.get("/api/air-terjun", async (req, res) => {
+    const id = req.params.kategori;
+    try {
+        const wisata = await Wisata.find({kategori: 'air-terjun'})
+        respons(200, wisata, "OK", res)
+    } catch (err) {
+        res.status(500).json({ message: err })
+    }
+})
 
 router.post("/", async (req, res) => {
     // if (!req.file) {
