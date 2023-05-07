@@ -20,14 +20,6 @@ const WisataSchema = mongoose.Schema({
         Boolean
     ],
     jamOp: [String],
-    //     senin: String,
-    //     selasa: String,
-    //     rabu: String,
-    //     kamis: String,
-    //     jumat: String,
-    //     sabtu: String,
-    //     minggu: String
-    // },
     imageGaleries: [String],
     "tempClosed": Boolean,
     "kategori": String,

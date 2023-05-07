@@ -31,6 +31,15 @@ router.get("/api/air-terjun", async (req, res) => {
         res.status(500).json({ message: err })
     }
 })
+router.get("/api/situs", async (req, res) => {
+    const id = req.params.kategori;
+    try {
+        const wisata = await Wisata.find({kategori: 'situs'})
+        respons(200, wisata, "OK", res)
+    } catch (err) {
+        res.status(500).json({ message: err })
+    }
+})
 
 router.post("/", async (req, res) => {
     // if (!req.file) {
