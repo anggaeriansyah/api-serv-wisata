@@ -13,6 +13,24 @@ router.get("/api", async (req, res) => {
         res.json({ message: err })
     }
 })
+router.get("/api/asc", async (req, res) => {
+    try {
+        const wisata = await Wisata.find()
+        const sortedWisata = wisata.sort((a, b)=> a.nama.localeCompare(b.nama))
+        respons(200, sortedWisata, "OK", res)
+    } catch (err) {
+        res.json({ message: err })
+    }
+})
+router.get("/api/desc", async (req, res) => {
+    try {
+        const wisata = await Wisata.find()
+        const sortedWisata = wisata.sort((a, b)=> b.nama.localeCompare(a.nama))
+        respons(200, sortedWisata, "OK", res)
+    } catch (err) {
+        res.json({ message: err })
+    }
+})
 router.get("/api/rekreasi", async (req, res) => {
     const id = req.params.kategori;
     try {
